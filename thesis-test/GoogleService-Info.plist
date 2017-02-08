@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>885039554872-h15e4desls519nis8h1cggcsu14h8kai.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.885039554872-h15e4desls519nis8h1cggcsu14h8kai</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAqTn9SFOda1GSRawBpi_8d0fBv6H5Ztoc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>885039554872</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.kevinblom.thesis-test</string>
+	<key>PROJECT_ID</key>
+	<string>thesis-a7f36</string>
+	<key>STORAGE_BUCKET</key>
+	<string>thesis-a7f36.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:885039554872:ios:2b6e7efc331775fc</string>
+	<key>DATABASE_URL</key>
+	<string>https://thesis-a7f36.firebaseio.com</string>
+</dict>
+</plist>

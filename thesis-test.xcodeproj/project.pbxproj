@@ -12,6 +12,8 @@
 		0AAC42271E4B440B004AABDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42251E4B440B004AABDF /* Main.storyboard */; };
 		0AAC42291E4B440B004AABDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42281E4B440B004AABDF /* Assets.xcassets */; };
 		0AAC422C1E4B440B004AABDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC422A1E4B440B004AABDF /* LaunchScreen.storyboard */; };
+		0AAC42341E4B5E0A004AABDF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */; };
+		4AE68668A8AF88F3EE0398F4 /* Pods_thesis_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A05C0C38BCEA283D21EC9C /* Pods_thesis_test.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		0AAC42281E4B440B004AABDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AAC422B1E4B440B004AABDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AAC422D1E4B440B004AABDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15853320853D5941F4B37882 /* Pods-thesis-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thesis-test.release.xcconfig"; path = "Pods/Target Support Files/Pods-thesis-test/Pods-thesis-test.release.xcconfig"; sourceTree = "<group>"; };
+		33A05C0C38BCEA283D21EC9C /* Pods_thesis_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thesis_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BBD7CDDC50770E9CD2CD137 /* Pods-thesis-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thesis-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-thesis-test/Pods-thesis-test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE68668A8AF88F3EE0398F4 /* Pods_thesis_test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				0AAC42201E4B440B004AABDF /* thesis-test */,
 				0AAC421F1E4B440B004AABDF /* Products */,
+				3977874EA2F57123D8686A3C /* Pods */,
+				BEF35A48A984950D58926D7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				0AAC42281E4B440B004AABDF /* Assets.xcassets */,
 				0AAC422A1E4B440B004AABDF /* LaunchScreen.storyboard */,
 				0AAC422D1E4B440B004AABDF /* Info.plist */,
+				0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */,
 			);
 			path = "thesis-test";
+			sourceTree = "<group>";
+		};
+		3977874EA2F57123D8686A3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BBD7CDDC50770E9CD2CD137 /* Pods-thesis-test.debug.xcconfig */,
+				15853320853D5941F4B37882 /* Pods-thesis-test.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BEF35A48A984950D58926D7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33A05C0C38BCEA283D21EC9C /* Pods_thesis_test.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AAC42301E4B440B004AABDF /* Build configuration list for PBXNativeTarget "thesis-test" */;
 			buildPhases = (
+				5AB133FAB6E864558239110E /* [CP] Check Pods Manifest.lock */,
 				0AAC421A1E4B440B004AABDF /* Sources */,
 				0AAC421B1E4B440B004AABDF /* Frameworks */,
 				0AAC421C1E4B440B004AABDF /* Resources */,
+				840640AB79DDD33EBBB26832 /* [CP] Embed Pods Frameworks */,
+				3ED772745F287E959100F436 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,12 +155,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AAC422C1E4B440B004AABDF /* LaunchScreen.storyboard in Resources */,
+				0AAC42341E4B5E0A004AABDF /* GoogleService-Info.plist in Resources */,
 				0AAC42291E4B440B004AABDF /* Assets.xcassets in Resources */,
 				0AAC42271E4B440B004AABDF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3ED772745F287E959100F436 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-thesis-test/Pods-thesis-test-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AB133FAB6E864558239110E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		840640AB79DDD33EBBB26832 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-thesis-test/Pods-thesis-test-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0AAC421A1E4B440B004AABDF /* Sources */ = {
@@ -257,10 +336,13 @@
 		};
 		0AAC42311E4B440B004AABDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BBD7CDDC50770E9CD2CD137 /* Pods-thesis-test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 26KYQ2DXPW;
 				INFOPLIST_FILE = "thesis-test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinblom.thesis-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -270,10 +352,13 @@
 		};
 		0AAC42321E4B440B004AABDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15853320853D5941F4B37882 /* Pods-thesis-test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 26KYQ2DXPW;
 				INFOPLIST_FILE = "thesis-test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinblom.thesis-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -300,6 +385,7 @@
 				0AAC42321E4B440B004AABDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
