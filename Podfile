@@ -7,4 +7,6 @@ target 'thesis-test' do
 
   # Pods for thesis-test
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 end
