@@ -62,7 +62,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="RCP-gC-EdW" kind="show" identifier="experimentConcluded" id="FfA-2G-qq1"/>
+                        <segue destination="RCP-gC-EdW" kind="showDetail" identifier="experimentConcluded" action="showViewController:sender:" id="FfA-2G-qq1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhX-ui-ZXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
