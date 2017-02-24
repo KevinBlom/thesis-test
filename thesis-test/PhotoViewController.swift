@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreGraphics
 
 class PhotoViewController: UIViewController {
     
@@ -20,6 +21,15 @@ class PhotoViewController: UIViewController {
     var tapCounter: Int = 0
     
     var tapSeries:[Tap] = [Tap(), Tap(), Tap(), Tap()]
+    
+    var photoSet: PhotoSet = PhotoSet(imagesWithPrefix: "P0", startOn: 44)
+    
+    @IBOutlet weak var photoView: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+            photoView.image = photoSet.currentImage
+    }
+    
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
