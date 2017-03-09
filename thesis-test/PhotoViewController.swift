@@ -17,7 +17,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var photoCounter: Int = 0
     
-    var photoSet: PhotoSet = PhotoSet(imagesWithPrefix: "P0", startOn: 44)
+    var photoSet: PhotoSet = PhotoSet(imagesWithPrefix: "P0", startAt: 44, endAt: 50)
     
     let reuseIdentifier = "cell"
     
@@ -61,12 +61,13 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
         let cv = collectionView as! TapCollectionView
         
         // First: Check if tap is in an active cell, if so, commit the buffered tap, else, clear the buffer
         if(cv.indicesForTappableCells.contains(indexPath.item)) {
             cv.commitTap()
-            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoCounter)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
+            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoSet.currentIndex)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
             if let cell = collectionView.cellForItem(at: indexPath as IndexPath) {
                 cell.backgroundColor = UIColor.clear
             }
@@ -74,17 +75,26 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
             cv.clearBufferTap()
         }
         
-        //Second: Check if wanted tap amount is reached and reset/update accordingly.
+        
+        
+        // Finally: Check if wanted tap amount is reached, move to next picture or end screen
         if (cv.taps() >= Constants.maximumTapCount) {
             cv.resetTapSeries()
-            photoCounter += 1
+            cv.isHidden = true
+            
+            if photoSet.lastPhoto {
+                DispatchQueue.main.async(execute: {
+                    self.performSegue(withIdentifier: "experimentConcluded", sender: self)
+                })
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Constants.nextPhotoDelay) {
+                self.tapCollectionView.isHidden = false
+            }
+            
+            photoView.image = photoSet.nextImage
         }
         
-        //Finally: If all photo's have passed, move to end screen
-        if photoCounter > Constants.maximumPhotoCount-1 {
-            DispatchQueue.main.async(execute: {
-                self.performSegue(withIdentifier: "experimentConcluded", sender: self)
-            })
-        }
+        
     }
 }

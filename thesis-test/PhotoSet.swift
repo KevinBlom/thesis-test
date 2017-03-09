@@ -13,27 +13,52 @@ class PhotoSet{
     
     var prefix: String
     var startIndex: Int
+    var endIndex: Int
     var currentIndex: Int
     var currentImage: UIImage {
         get {
             return UIImage(named: currentImageName)!
-            //return UIImage(named: "P044")!
         }
     }
     
+    var nextImage: UIImage {
+        get {
+            return UIImage(named: nextImageName)!
+        }
+    }
+
     var currentImageName: String {
         get {
             var imageName: String = prefix
             imageName += String(currentIndex)
-            //imageName += ".bmp"
             return imageName
         }
     }
     
-    init(imagesWithPrefix prefix: String, startOn startIndex: Int){
+    var nextImageName: String {
+        get {
+            currentIndex += 1
+            if (currentIndex > endIndex) {
+                currentIndex -= 1
+            }
+            var imageName: String = prefix
+            imageName += String(currentIndex)
+            return imageName
+        }
+    }
+    
+    var lastPhoto: Bool {
+        get {
+            return currentIndex == endIndex
+        }
+    }
+    
+    init(imagesWithPrefix prefix: String, startAt startIndex: Int, endAt endIndex: Int){
         self.prefix = prefix
         self.startIndex = startIndex
+        self.endIndex = endIndex
         self.currentIndex = startIndex
     }
+    
     
 }

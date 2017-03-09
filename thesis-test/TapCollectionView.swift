@@ -68,6 +68,16 @@ class TapCollectionView: UICollectionView {
     
     func resetTapSeries() {
         tapSeries = []
+        indicesForTappableCells = []
+        randomIndexPickerList = []
+        
+        generateRandomTappableCells()
+        
+        for index in 0...indicesForTappableCells.count-1 {
+            if let cell = cellForItem(at: [0,indicesForTappableCells[index]]) {
+                cell.backgroundColor = UIColor.cyan
+            }
+        }
     }
     
     func taps() -> Int {
