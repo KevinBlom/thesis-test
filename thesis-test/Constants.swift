@@ -11,4 +11,7 @@ import Foundation
 struct Constants {
     static let maximumTapCount = 4
     static let maximumPhotoCount = 4
+    static let gridItems = 16
+    static let amountOfTappableCells = 4
+    static let nextPhotoDelay = 4.0
 }

@@ -60,9 +60,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="34x-D9-Raj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="34x-D9-Raj">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kdv-sN-rUH" customClass="TapCollectionView" customModule="thesis_test" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="279" width="375" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="urb-Mo-lm4">
+                                    <size key="itemSize" width="85" height="85"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="vBF-lE-vbd">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="RBg-fY-Auw" id="Ic8-6J-1He"/>
+                                    <outlet property="delegate" destination="RBg-fY-Auw" id="284-Rj-FhS"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -74,12 +102,13 @@
                     </view>
                     <connections>
                         <outlet property="photoView" destination="34x-D9-Raj" id="b2v-Wz-kyG"/>
+                        <outlet property="tapCollectionView" destination="Kdv-sN-rUH" id="40V-Zz-TCC"/>
                         <segue destination="RCP-gC-EdW" kind="showDetail" identifier="experimentConcluded" action="showViewController:sender:" id="FfA-2G-qq1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhX-ui-ZXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="139"/>
+            <point key="canvasLocation" x="853.60000000000002" y="138.98050974512745"/>
         </scene>
         <!--End Controller-->
         <scene sceneID="M5O-1c-Vkg">

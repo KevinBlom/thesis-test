@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A073F4E1E5EE391003F7D44 /* PhotoSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A073F4D1E5EE391003F7D44 /* PhotoSet.swift */; };
+		0A3E038B1E71508D00A3996D /* TapCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3E038A1E71508D00A3996D /* TapCollectionView.swift */; };
 		0AAC42221E4B440B004AABDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC42211E4B440B004AABDF /* AppDelegate.swift */; };
 		0AAC42241E4B440B004AABDF /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC42231E4B440B004AABDF /* StartController.swift */; };
 		0AAC42271E4B440B004AABDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42251E4B440B004AABDF /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		0A073F4D1E5EE391003F7D44 /* PhotoSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSet.swift; sourceTree = "<group>"; };
+		0A3E038A1E71508D00A3996D /* TapCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapCollectionView.swift; sourceTree = "<group>"; };
 		0AAC421E1E4B440B004AABDF /* thesis-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "thesis-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AAC42211E4B440B004AABDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AAC42231E4B440B004AABDF /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		0A3E03891E71507C00A3996D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A3E038A1E71508D00A3996D /* TapCollectionView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		0AAC42151E4B440B004AABDF = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				0AAC42211E4B440B004AABDF /* AppDelegate.swift */,
+				0A3E03891E71507C00A3996D /* View */,
 				0A3A4B111E4DC1E8008BEC04 /* Controller */,
 				0A3A4B121E4DC21A008BEC04 /* Model */,
 				0AAC42251E4B440B004AABDF /* Main.storyboard */,
@@ -253,6 +264,7 @@
 				0AC3D1C81E4E12BA0063CBFB /* EndController.swift in Sources */,
 				0AC3D1C21E4DEA030063CBFB /* PhotoViewController.swift in Sources */,
 				0AAC42221E4B440B004AABDF /* AppDelegate.swift in Sources */,
+				0A3E038B1E71508D00A3996D /* TapCollectionView.swift in Sources */,
 				0AC3D1CA1E4E13B30063CBFB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

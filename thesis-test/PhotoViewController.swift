@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import CoreGraphics
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var databaseReference: FIRDatabaseReference!
     var experimentKey: String!
@@ -24,18 +24,29 @@ class PhotoViewController: UIViewController {
     
     var photoSet: PhotoSet = PhotoSet(imagesWithPrefix: "P0", startOn: 44)
     
+    let reuseIdentifier = "cell"
+    
+    @IBOutlet weak var tapCollectionView: TapCollectionView!
     @IBOutlet weak var photoView: UIImageView!
     
+    
     override func viewWillAppear(_ animated: Bool) {
-            photoView.image = photoSet.currentImage
+        photoView.image = photoSet.currentImage
+        tapCollectionView.isHidden = true
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Constants.nextPhotoDelay) {
+            self.tapCollectionView.isHidden = false
+        }
     }
     
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         if let touch = touches.first {
             if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
                 // 3D Touch capable
                 let force = touch.force
+                print("Force: " + force.description)
                 tapSeries[tapCounter].addTap(force: force)
             }
         }
@@ -57,6 +68,35 @@ class PhotoViewController: UIViewController {
                 })
             }
         }
+    }
+    
+    // MARK: - UICollectionViewDataSource protocol
+    
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Constants.gridItems
+    }
+    
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cv = collectionView as! TapCollectionView
+        // get a reference to our storyboard cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
+        
+        if(cv.indicesForTappableCells.contains(indexPath[1])) {
+            cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+
+        }
+        
+        return cell
+    }
+    
+    // MARK: - UICollectionViewDelegate protocol
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
