@@ -15,12 +15,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     var databaseReference: FIRDatabaseReference!
     var experimentKey: String!
     
-    var recordTouches: Bool = true
-    
     var photoCounter: Int = 0
-    var tapCounter: Int = 0
-    
-    var tapSeries:[Tap] = [Tap(), Tap(), Tap(), Tap()]
     
     var photoSet: PhotoSet = PhotoSet(imagesWithPrefix: "P0", startOn: 44)
     
@@ -39,36 +34,6 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
     
-
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if let touch = touches.first {
-            if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-                // 3D Touch capable
-                let force = touch.force
-                print("Force: " + force.description)
-                tapSeries[tapCounter].addTap(force: force)
-            }
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
-        if(recordTouches){
-            self.databaseReference.child("experiments").child(experimentKey).child(String(photoCounter)).child(String(tapCounter)).setValue(tapSeries[tapCounter].forceSeries)
-            tapCounter += 1
-            if tapCounter > Constants.maximumTapCount-1 {
-                tapCounter = 0
-                photoCounter += 1
-            }
-            
-            if photoCounter > Constants.maximumPhotoCount-1 {
-                DispatchQueue.main.async(execute: {
-                    self.performSegue(withIdentifier: "experimentConcluded", sender: self)
-                })
-            }
-        }
-    }
     
     // MARK: - UICollectionViewDataSource protocol
     
@@ -95,11 +60,31 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        print("You selected cell #\(indexPath.item)!")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        recordTouches = false
+        
+        let cv = collectionView as! TapCollectionView
+        
+        // First: Check if tap is in an active cell, if so, commit the buffered tap, else, clear the buffer
+        if(cv.indicesForTappableCells.contains(indexPath.item)) {
+            cv.commitTap()
+            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoCounter)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
+            if let cell = collectionView.cellForItem(at: indexPath as IndexPath) {
+                cell.backgroundColor = UIColor.clear
+            }
+        } else {
+            cv.clearBufferTap()
+        }
+        
+        //Second: Check if wanted tap amount is reached and reset/update accordingly.
+        if (cv.taps() >= Constants.maximumTapCount) {
+            cv.resetTapSeries()
+            photoCounter += 1
+        }
+        
+        //Finally: If all photo's have passed, move to end screen
+        if photoCounter > Constants.maximumPhotoCount-1 {
+            DispatchQueue.main.async(execute: {
+                self.performSegue(withIdentifier: "experimentConcluded", sender: self)
+            })
+        }
     }
 }

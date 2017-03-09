@@ -16,7 +16,7 @@ class Tap {
         
     }
     
-    func addTap(force: CGFloat) {
+    func add(force: CGFloat) {
         forceSeries.append(force)
     }
 }

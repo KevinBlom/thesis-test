@@ -102,7 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="photoView" destination="34x-D9-Raj" id="b2v-Wz-kyG"/>
-                        <outlet property="tapCollectionView" destination="Kdv-sN-rUH" id="40V-Zz-TCC"/>
+                        <outlet property="tapCollectionView" destination="Kdv-sN-rUH" id="q5w-fz-vUG"/>
                         <segue destination="RCP-gC-EdW" kind="showDetail" identifier="experimentConcluded" action="showViewController:sender:" id="FfA-2G-qq1"/>
                     </connections>
                 </viewController>

@@ -16,8 +16,8 @@ class PhotoSet{
     var currentIndex: Int
     var currentImage: UIImage {
         get {
-            //return UIImage(named: currentImageName)!
-            return UIImage(named: "P044")!
+            return UIImage(named: currentImageName)!
+            //return UIImage(named: "P044")!
         }
     }
     
@@ -25,7 +25,7 @@ class PhotoSet{
         get {
             var imageName: String = prefix
             imageName += String(currentIndex)
-            imageName += ".bmp"
+            //imageName += ".bmp"
             return imageName
         }
     }
