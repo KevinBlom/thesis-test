@@ -18,6 +18,18 @@ class TapCollectionView: UICollectionView {
     var tapSeries: [Tap]
     var bufferTap: Tap
     
+    var tapStartTime: UInt64 = 0
+    var tapEndTime: UInt64 = 0
+    
+    var tapDuration: UInt64 {
+        get {
+            let elapsed = tapEndTime - tapStartTime
+            var timeBaseInfo = mach_timebase_info_data_t()
+            mach_timebase_info(&timeBaseInfo)
+            return elapsed * UInt64(timeBaseInfo.numer) / UInt64(timeBaseInfo.denom);
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         randomIndexPickerList = []
         indicesForTappableCells = []
@@ -29,7 +41,7 @@ class TapCollectionView: UICollectionView {
         generateRandomTappableCells()
         
     }
-
+    
     func generateRandomTappableCells() {
         
         // Generates an array with increasing numbers to pick random numbers from
@@ -45,16 +57,24 @@ class TapCollectionView: UICollectionView {
         
         print(indicesForTappableCells)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tapStartTime = mach_absolute_time()
+        super.touchesBegan(touches, with: event)
+        
+    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         if let touch = touches.first {
             if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
                 // 3D Touch capable
                 let force = touch.force
                 print("Force: " + force.description)
                 bufferTap.add(force: force)
+                tapEndTime = mach_absolute_time()
             }
         }
+        super.touchesMoved(touches, with: event)
     }
     
     func commitTap() {

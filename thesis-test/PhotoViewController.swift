@@ -61,13 +61,16 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         let cv = collectionView as! TapCollectionView
+        
+        // End timing here
+        //cv.tapEndTime = mach_absolute_time()
         
         // First: Check if tap is in an active cell, if so, commit the buffered tap, else, clear the buffer
         if(cv.indicesForTappableCells.contains(indexPath.item)) {
             cv.commitTap()
             self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoSet.currentIndex)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
+            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoSet.currentIndex)).child(String(cv.taps())).child("Duration").setValue(cv.tapDuration)
             if let cell = collectionView.cellForItem(at: indexPath as IndexPath) {
                 cell.backgroundColor = UIColor.clear
             }

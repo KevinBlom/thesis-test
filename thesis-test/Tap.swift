@@ -11,6 +11,7 @@ import Foundation
 
 class Tap {
     var forceSeries:[CGFloat] = []
+    var time: Int = 0
     
     init() {
         
@@ -18,5 +19,9 @@ class Tap {
     
     func add(force: CGFloat) {
         forceSeries.append(force)
+    }
+    
+    func setTimePeriodOfTap(milliseconds ms: Int) {
+        time = ms
     }
 }
