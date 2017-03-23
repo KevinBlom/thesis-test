@@ -12,7 +12,6 @@
 		0AAC42221E4B440B004AABDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC42211E4B440B004AABDF /* AppDelegate.swift */; };
 		0AAC42241E4B440B004AABDF /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC42231E4B440B004AABDF /* StartController.swift */; };
 		0AAC42271E4B440B004AABDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42251E4B440B004AABDF /* Main.storyboard */; };
-		0AAC42291E4B440B004AABDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42281E4B440B004AABDF /* Assets.xcassets */; };
 		0AAC422C1E4B440B004AABDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC422A1E4B440B004AABDF /* LaunchScreen.storyboard */; };
 		0AAC42341E4B5E0A004AABDF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */; };
 		0AC3D1C21E4DEA030063CBFB /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3D1C11E4DEA030063CBFB /* PhotoViewController.swift */; };
@@ -29,7 +28,6 @@
 		0AAC42211E4B440B004AABDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AAC42231E4B440B004AABDF /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		0AAC42261E4B440B004AABDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0AAC42281E4B440B004AABDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AAC422B1E4B440B004AABDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AAC422D1E4B440B004AABDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				0A3A4B111E4DC1E8008BEC04 /* Controller */,
 				0A3A4B121E4DC21A008BEC04 /* Model */,
 				0AAC42251E4B440B004AABDF /* Main.storyboard */,
-				0AAC42281E4B440B004AABDF /* Assets.xcassets */,
 				0AAC422A1E4B440B004AABDF /* LaunchScreen.storyboard */,
 				0AAC422D1E4B440B004AABDF /* Info.plist */,
 				0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */,
@@ -198,7 +195,6 @@
 			files = (
 				0AAC422C1E4B440B004AABDF /* LaunchScreen.storyboard in Resources */,
 				0AAC42341E4B5E0A004AABDF /* GoogleService-Info.plist in Resources */,
-				0AAC42291E4B440B004AABDF /* Assets.xcassets in Resources */,
 				0AAC42271E4B440B004AABDF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
