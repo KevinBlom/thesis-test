@@ -67,7 +67,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         // First: Check if tap is in an active cell, if so, commit the buffered tap, else, clear the buffer
         if(cv.indicesForTappableCells.contains(indexPath.item)) {
             cv.commitTap()
-            let currentPhotoName = photoSet.currentImageName
+            let currentPhotoName = removeExtension(from: photoSet.currentImageName)
             self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
             self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).child("Duration").setValue(cv.tapDuration)
             if let cell = collectionView.cellForItem(at: indexPath as IndexPath) {
@@ -98,5 +98,9 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
         
         
+    }
+    
+    func removeExtension(from filename: String) -> String {
+        return filename.replacingOccurrences(of: Constants.imageExtensionSuffix, with: "")
     }
 }
