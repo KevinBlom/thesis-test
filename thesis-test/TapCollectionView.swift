@@ -54,8 +54,6 @@ class TapCollectionView: UICollectionView {
             indicesForTappableCells.append(randomIndexPickerList[Int(pickIndex)])
             randomIndexPickerList.remove(at: Int(pickIndex))
         }
-        
-        print(indicesForTappableCells)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tapStartTime = mach_absolute_time()

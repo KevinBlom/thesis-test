@@ -11,54 +11,61 @@ import UIKit
 
 class PhotoSet{
     
-    var prefix: String
-    var startIndex: Int
-    var endIndex: Int
-    var currentIndex: Int
-    var currentImage: UIImage {
-        get {
-            return UIImage(named: currentImageName)!
-        }
+    var imageURLs: [URL]
+    var currentImageName: String
+    
+    init(fromFolder named: String, withExtension format: String){
+        imageURLs = []
+        currentImageName = ""
+        imageURLs = loadImageURLs()
     }
     
-    var nextImage: UIImage {
-        get {
-            return UIImage(named: nextImageName)!
-        }
-    }
-
-    var currentImageName: String {
-        get {
-            var imageName: String = prefix
-            imageName += String(currentIndex)
-            return imageName
-        }
-    }
-    
-    var nextImageName: String {
-        get {
-            currentIndex += 1
-            if (currentIndex > endIndex) {
-                currentIndex -= 1
+    func loadImageURLs() -> [URL] {
+        var tempURLs: [URL] = []
+        
+        if let path = Bundle.main.resourcePath {
+            let imagePath = path + Constants.pictureRootFolderPath
+            let url = URL(fileURLWithPath: imagePath)
+            let fileManager = FileManager.default
+            
+            let properties = [URLResourceKey.localizedNameKey,
+                              URLResourceKey.creationDateKey, URLResourceKey.localizedTypeDescriptionKey]
+            
+            do {
+                tempURLs = try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: properties, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                
+                print("image URLs: \(tempURLs)")
+                // Create image from URL
+                //var myImage =  UIImage(data: NSData(contentsOfURL: imageURLs[0])!)
+                
+            } catch let error as NSError {
+                print(error.description)
             }
-            var imageName: String = prefix
-            imageName += String(currentIndex)
-            return imageName
         }
+        
+        return tempURLs
     }
     
-    var lastPhoto: Bool {
-        get {
-            return currentIndex == endIndex
+    func nextImage() -> UIImage {
+        var imageData: Data
+        let tempURL = randomImageURL()
+        currentImageName = tempURL.lastPathComponent
+        
+        do {
+            imageData = try Data(contentsOf: tempURL)
+        } catch let error as NSError {
+            print(error.description)
+            return UIImage()
         }
+        
+        return UIImage(data: imageData)!
     }
     
-    init(imagesWithPrefix prefix: String, startAt startIndex: Int, endAt endIndex: Int){
-        self.prefix = prefix
-        self.startIndex = startIndex
-        self.endIndex = endIndex
-        self.currentIndex = startIndex
+    func randomImageURL () -> URL {
+        return imageURLs.randomItemDestructive() as URL
     }
     
-    
+    func imagesLeft() -> Bool {
+        return imageURLs.count > 0
+    }
 }

@@ -17,7 +17,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var photoCounter: Int = 0
     
-    var photoSet: PhotoSet = PhotoSet(imagesWithPrefix: "P0", startAt: 44, endAt: 50)
+    var photoSet: PhotoSet = PhotoSet(fromFolder: Constants.pictureRootFolderPath, withExtension: Constants.imageExtensionSuffix)
     
     let reuseIdentifier = "cell"
     
@@ -26,7 +26,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     
     override func viewWillAppear(_ animated: Bool) {
-        photoView.image = photoSet.currentImage
+        photoView.image = photoSet.nextImage()
         tapCollectionView.isHidden = true
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Constants.nextPhotoDelay) {
@@ -62,15 +62,14 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cv = collectionView as! TapCollectionView
-        
-        // End timing here
-        //cv.tapEndTime = mach_absolute_time()
+
         
         // First: Check if tap is in an active cell, if so, commit the buffered tap, else, clear the buffer
         if(cv.indicesForTappableCells.contains(indexPath.item)) {
             cv.commitTap()
-            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoSet.currentIndex)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
-            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(photoSet.currentIndex)).child(String(cv.taps())).child("Duration").setValue(cv.tapDuration)
+            let currentPhotoName = photoSet.currentImageName
+            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
+            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).child("Duration").setValue(cv.tapDuration)
             if let cell = collectionView.cellForItem(at: indexPath as IndexPath) {
                 cell.backgroundColor = UIColor.clear
             }
@@ -85,7 +84,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
             cv.resetTapSeries()
             cv.isHidden = true
             
-            if photoSet.lastPhoto {
+            if !photoSet.imagesLeft() {
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "experimentConcluded", sender: self)
                 })
@@ -95,7 +94,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
                 self.tapCollectionView.isHidden = false
             }
             
-            photoView.image = photoSet.nextImage
+            photoView.image = photoSet.nextImage()
         }
         
         

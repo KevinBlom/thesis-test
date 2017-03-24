@@ -18,7 +18,9 @@
 		0AC3D1C61E4E074C0063CBFB /* Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3D1C51E4E074C0063CBFB /* Tap.swift */; };
 		0AC3D1C81E4E12BA0063CBFB /* EndController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3D1C71E4E12BA0063CBFB /* EndController.swift */; };
 		0AC3D1CA1E4E13B30063CBFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3D1C91E4E13B30063CBFB /* Constants.swift */; };
-		0AF886AD1E83D81D00B39704 /* Pictures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF886AC1E83D81D00B39704 /* Pictures.xcassets */; };
+		0AF886AF1E851AB000B39704 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF886AE1E851AB000B39704 /* Images.xcassets */; };
+		0AF887A31E851D8300B39704 /* Pictures in Resources */ = {isa = PBXBuildFile; fileRef = 0AF887A21E851D8300B39704 /* Pictures */; };
+		0AF887A51E8520A300B39704 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF887A41E8520A300B39704 /* Array.swift */; };
 		4AE68668A8AF88F3EE0398F4 /* Pods_thesis_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A05C0C38BCEA283D21EC9C /* Pods_thesis_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +38,9 @@
 		0AC3D1C51E4E074C0063CBFB /* Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tap.swift; sourceTree = "<group>"; };
 		0AC3D1C71E4E12BA0063CBFB /* EndController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndController.swift; sourceTree = "<group>"; };
 		0AC3D1C91E4E13B30063CBFB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0AF886AC1E83D81D00B39704 /* Pictures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Pictures.xcassets; sourceTree = "<group>"; };
+		0AF886AE1E851AB000B39704 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0AF887A21E851D8300B39704 /* Pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pictures; sourceTree = "<group>"; };
+		0AF887A41E8520A300B39704 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		15853320853D5941F4B37882 /* Pods-thesis-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thesis-test.release.xcconfig"; path = "Pods/Target Support Files/Pods-thesis-test/Pods-thesis-test.release.xcconfig"; sourceTree = "<group>"; };
 		33A05C0C38BCEA283D21EC9C /* Pods_thesis_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thesis_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBD7CDDC50770E9CD2CD137 /* Pods-thesis-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thesis-test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-thesis-test/Pods-thesis-test.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				0AC3D1C51E4E074C0063CBFB /* Tap.swift */,
 				0AC3D1C91E4E13B30063CBFB /* Constants.swift */,
 				0A073F4D1E5EE391003F7D44 /* PhotoSet.swift */,
+				0AF887A41E8520A300B39704 /* Array.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0AAC42211E4B440B004AABDF /* AppDelegate.swift */,
+				0AF887A21E851D8300B39704 /* Pictures */,
 				0A3E03891E71507C00A3996D /* View */,
 				0A3A4B111E4DC1E8008BEC04 /* Controller */,
 				0A3A4B121E4DC21A008BEC04 /* Model */,
@@ -111,7 +117,7 @@
 				0AAC422A1E4B440B004AABDF /* LaunchScreen.storyboard */,
 				0AAC422D1E4B440B004AABDF /* Info.plist */,
 				0AAC42331E4B5E0A004AABDF /* GoogleService-Info.plist */,
-				0AF886AC1E83D81D00B39704 /* Pictures.xcassets */,
+				0AF886AE1E851AB000B39704 /* Images.xcassets */,
 			);
 			path = "thesis-test";
 			sourceTree = "<group>";
@@ -196,8 +202,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AF886AD1E83D81D00B39704 /* Pictures.xcassets in Resources */,
+				0AF886AF1E851AB000B39704 /* Images.xcassets in Resources */,
 				0AAC422C1E4B440B004AABDF /* LaunchScreen.storyboard in Resources */,
+				0AF887A31E851D8300B39704 /* Pictures in Resources */,
 				0AAC42341E4B5E0A004AABDF /* GoogleService-Info.plist in Resources */,
 				0AAC42271E4B440B004AABDF /* Main.storyboard in Resources */,
 			);
@@ -258,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF887A51E8520A300B39704 /* Array.swift in Sources */,
 				0AAC42241E4B440B004AABDF /* StartController.swift in Sources */,
 				0AC3D1C61E4E074C0063CBFB /* Tap.swift in Sources */,
 				0A073F4E1E5EE391003F7D44 /* PhotoSet.swift in Sources */,
