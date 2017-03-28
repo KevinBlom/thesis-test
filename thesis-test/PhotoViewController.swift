@@ -50,8 +50,9 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath)
         
         if(cv.indicesForTappableCells.contains(indexPath[1])) {
-            cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
-
+            cell.backgroundColor = Constants.buttonColor
+        } else {
+            cell.backgroundColor = UIColor.clear
         }
         
         return cell

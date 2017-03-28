@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let maximumTapCount = 4
     static let maximumPhotoCount = 1
     static let gridItems = 16
     static let amountOfTappableCells = 4
-    static let nextPhotoDelay = 1.0
+    static let nextPhotoDelay = 5.0
+    static let buttonColor = UIColor.gray
     
     // Folder names in asset catalog
     static let pictureRootFolderPath = "/Pictures"
