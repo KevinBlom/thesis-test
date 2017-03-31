@@ -23,7 +23,7 @@ class TapCollectionView: UICollectionView {
     
     var tapDuration: UInt64 {
         get {
-            let elapsed = tapEndTime - tapStartTime
+            let elapsed: UInt64 = tapEndTime - tapStartTime
             var timeBaseInfo = mach_timebase_info_data_t()
             mach_timebase_info(&timeBaseInfo)
             return elapsed * UInt64(timeBaseInfo.numer) / UInt64(timeBaseInfo.denom);
@@ -69,15 +69,26 @@ class TapCollectionView: UICollectionView {
                 let force = touch.force
                 print("Force: " + force.description)
                 bufferTap.add(force: force)
-                tapEndTime = mach_absolute_time()
+                //tapEndTime = mach_absolute_time()
             }
         }
         super.touchesMoved(touches, with: event)
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tapEndTime = mach_absolute_time()
+        super.touchesEnded(touches, with: event)
+    }
+    
     func commitTap() {
         tapSeries.append(bufferTap)
         bufferTap = Tap()
+    }
+    
+    func removeFromIndicesForTappableCells(containing element: Int) {
+        if let index = indicesForTappableCells.index(of: element) {
+            indicesForTappableCells.remove(at: index)
+        }
     }
     
     func clearBufferTap() {

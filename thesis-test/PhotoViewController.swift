@@ -68,6 +68,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         // First: Check if tap is in an active cell, if so, commit the buffered tap, else, clear the buffer
         if(cv.indicesForTappableCells.contains(indexPath.item)) {
             cv.commitTap()
+            cv.removeFromIndicesForTappableCells(containing: indexPath.item)
             let currentPhotoName = removeExtension(from: photoSet.currentImageName)
             self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
             self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).child("Duration").setValue(cv.tapDuration)
@@ -89,13 +90,13 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
                 DispatchQueue.main.async(execute: {
                     self.performSegue(withIdentifier: "experimentConcluded", sender: self)
                 })
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Constants.nextPhotoDelay) {
+                    self.tapCollectionView.isHidden = false
+                }
+                
+                photoView.image = photoSet.nextImage()
             }
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Constants.nextPhotoDelay) {
-                self.tapCollectionView.isHidden = false
-            }
-            
-            photoView.image = photoSet.nextImage()
         }
         
         
