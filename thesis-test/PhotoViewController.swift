@@ -70,8 +70,18 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
             cv.commitTap()
             cv.removeFromIndicesForTappableCells(containing: indexPath.item)
             let currentPhotoName = removeExtension(from: photoSet.currentImageName)
-            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
-            self.databaseReference.child("experiments").child(experimentKey).child("Photo " + String(currentPhotoName)).child(String(cv.taps())).child("Duration").setValue(cv.tapDuration)
+            
+            self.databaseReference.child("experiments").child(experimentKey).child(String(currentPhotoName)).child("Tap"+String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
+            self.databaseReference.child("experiments").child(experimentKey).child(String(currentPhotoName)).child("Tap"+String(cv.taps())).child("Duration").setValue(cv.tapDuration)
+            
+            //let data = [String(cv.taps()): cv.tapDuration]
+            
+            //self.databaseReference.child("experiments/\(experimentKey!)/\(currentPhotoName)/\(cv.taps())").child(String(cv.taps())).setValue(cv.tapSeries.last!.forceSeries)
+
+            //self.databaseReference.child("experiments/\(experimentKey!)/\(currentPhotoName)").updateChildValues(data)
+            //self.databaseReference.child("experiments").child(experimentKey).child(String(currentPhotoName)).child(String(cv.taps())).setValue(cv.tapDuration)
+            
+
             if let cell = collectionView.cellForItem(at: indexPath as IndexPath) {
                 cell.backgroundColor = UIColor.clear
             }

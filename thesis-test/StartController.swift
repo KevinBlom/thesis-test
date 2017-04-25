@@ -39,7 +39,7 @@ final class StartController: UIViewController {
 
     @IBAction func startPressed(_ sender: Any) {
         experimentKey = databaseReference.child("experiments").childByAutoId().key
-        self.databaseReference.child("experiments").child(experimentKey).child("createdAt").setValue([".sv" : "timestamp"])
+        //self.databaseReference.child("experiments").child(experimentKey).child("createdAt").setValue([".sv" : "timestamp"])
         
         DispatchQueue.main.async(execute: {
             self.performSegue(withIdentifier: "startPressed", sender: self)
